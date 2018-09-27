@@ -2,19 +2,19 @@ function func1(name) {
     console.log('hello ' + name)
 }
 
-func1('sid', 'tuk') // extre arguments would be ignored
+func1('sid', 'tuk'); // extre arguments would be ignored
 
-console.log(func1)
+console.log(func1);
 
 //let func1 = function(name) {
 let func2 = function(name) {
     console.log('hello ' + name)
-}
+};
 
-func2('tuk')
+func2('tuk');
 
-func2 = name => console.log('hello ' + name)
-func2('maa')
+func2 = name => console.log('hello ' + name);
+func2('maa');
 
 setTimeout(() => console.log('Hi!!!'), 5000);
 

@@ -1,7 +1,10 @@
 let keyValue = {
     name : 'sid'
-}
+};
 
-const update = () => keyValue.name = 'tuk'
+const update = () => keyValue.name = 'tuk';
 
-export {keyValue, update}
+let defaultValue = 'defaultValue';
+
+export {keyValue, update};
+export default defaultValue;
