@@ -1,0 +1,11 @@
+﻿    1. Image: A Docker image is a file, comprised of multiple layers, used to execute code in a Docker container.
+    2. Dockerfile: it’s defines the template for the docker image.
+    3. Docker hub: it’s the remote repository of docker images.
+    • By default, docker images are pulled from https://hub.docker.com/
+    4. commands:
+    • docker build -t <localimagename> .
+    • docker tag <localimagename> <username>/<repository>:<tag>
+    • docker login
+    • docker push <username>/<repository>:<tag>
+    • docker pull <username>/<repository>:<tag>
+    • docker run -p <local_port>:<container_port> <username>/<repository>:<tag>

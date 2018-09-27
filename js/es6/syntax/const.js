@@ -1,22 +1,22 @@
 // let defines block scope
-let name1 = 'maa'
+let name1 = 'maa';
 
 if(true) {
-    name1 = 'mama'
+    name1 = 'mama';
 }
 
-console.log(name1)
+console.log(name1);
 
 // const defines constants
-const NAME2 = 'maa'
+const NAME2 = 'maa';
 
 if(true) {
     // error!!
     // NAME2 = 'mama'
 }
 
-console.log(NAME2)
+console.log(NAME2);
 
 const NAMES = ['sid', 'tuk']
-NAMES.push('maa')
-console.log(NAMES)
+NAMES.push('maa');
+console.log(NAMES);

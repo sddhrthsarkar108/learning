@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
+    watch: true,
     mode: 'development',
     entry: path.resolve(__dirname, 'es6/modules/app.js'),
     context: path.resolve(__dirname, 'es6/modules'),

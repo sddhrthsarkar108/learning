@@ -1,7 +1,7 @@
 // hoisting defines a behavior where we initialize 
 // a variable before actully declaring it in js
-age = 27
-console.log(age)
+age = 27;
+console.log(age);
 
 var age;
 
@@ -17,6 +17,6 @@ function dummy() {
 
 // not allowed!!!
 // dummy()
-let age2
-dummy()
-console.log(age2)
+let age2;
+dummy();
+console.log(age2);
