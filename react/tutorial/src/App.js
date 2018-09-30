@@ -12,7 +12,8 @@ class App extends Component {
       {name: 'sid', age: 28},
       {name: 'tuk', age: 28},
       {name: 'maa', age: 52}
-    ]
+    ],
+    showPersons: true
   }
 
   personShuffleHandler = () => {
@@ -29,13 +30,25 @@ class App extends Component {
     })
   }
 
-  nameChangeHandler = event => {
+  nameChangeHandler = (event, name) => {
+    const personIndex = this.state.persons.findIndex(person => person.name === name);
+    const person = {
+      ...this.state.persons[personIndex]
+    }
+    
+    person.name = event.target.value;
     const persons = [...this.state.persons];
-    persons[1].name = event.target.value;
+    persons[personIndex] = person;
+    this.setState({
+      persons
+    });
+  }
+
+  toggleHandler = () => {
     this.setState({
       ...this.state,
-      persons
-    })
+      showPersons: !this.state.showPersons
+    });
   }
 
   // every react component returns a JSX element
@@ -46,27 +59,77 @@ class App extends Component {
       backgroundColor: 'white',
       font: 'inherit',
       border: '1px solid blue'
+    };
+
+    let persons = null;
+
+    // better approach then keeping it in return method
+    // since the render is bound to be called for every
+    // state change persons would be updated accordingly
+    if(this.state.showPersons) {
+      persons = (
+        <div>
+        {
+          // index is index of element in list
+          // helpful to refer person element in list
+          this.state.persons.map((person, index) => {
+            // while rendering list of jsx component react expects
+            // key attribute on component which uniquely identifies
+            // the element in dom. without a key for any update react
+            // would rerender whole list for any change which is very 
+            // inefficient for long lists. index although unique should
+            // not be used as key as mutatying the list would change the
+            // index of existing items.
+            return <Person 
+            key = {person.name}
+            name={this.state.persons[index].name}
+            age={this.state.persons[index].age}
+            click={this.personShuffleHandler}
+            change={(event) => this.nameChangeHandler(event, person.name)}>
+            click to shuffle {this.state.name}
+            </Person>
+          })
+        // <Person 
+        // name={this.state.persons[0].name} 
+        // age={this.state.persons[0].age}/>
+        // <Person 
+        // name={this.state.persons[1].name} 
+        // age={this.state.persons[1].age} 
+        // click={this.personShuffleHandler}
+        // change={this.nameChangeHandler}>
+        // <li>No hobbbies</li>
+        // </Person>
+        }
+        </div>
+      );
     }
     
     return (
       <div className="App">
         <h1>Learning react</h1>
         <p>jsx paragraph</p>
-        <Person 
-        name={this.state.persons[0].name} 
-        age={this.state.persons[0].age}/>
-        {/* 
-          we can even send html content as child 
-          which would be recieved in the props of person
-          component dynamically. 
-        */}
-        <Person 
-        name={this.state.persons[1].name} 
-        age={this.state.persons[1].age} 
-        click={this.personShuffleHandler}
-        change={this.nameChangeHandler}>
-        <li>No hobbbies</li>
-        </Person>
+        {
+          //this.state.showPersons === true ? // can' use if and not efficient for complex jxs
+        // <div>
+        // <Person 
+        // name={this.state.persons[0].name} 
+        // age={this.state.persons[0].age}/>
+        // {/* 
+        //   we can even send html content as child 
+        //   which would be recieved in the props of person
+        //   component dynamically. 
+        // */}
+        // <Person 
+        // name={this.state.persons[1].name} 
+        // age={this.state.persons[1].age} 
+        // click={this.personShuffleHandler}
+        // change={this.nameChangeHandler}>
+        // <li>No hobbbies</li>
+        // </Person>
+        // </div> //: null
+        }
+        {persons}
+        <button onClick={this.toggleHandler}>Toogle</button>
         <button style={style} onClick={this.personShuffleHandler}>Shuffle</button>
       </div>
     );
