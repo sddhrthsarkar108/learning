@@ -6,6 +6,7 @@ class ErrorBoundary extends Component {
         errorMsg: ''
     };
 
+    // lifecycle callback on error
     componentDidCatch = (error, info) => {
         this.state({
             hasError: true,

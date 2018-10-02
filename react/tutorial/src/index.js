@@ -8,5 +8,5 @@ import registerServiceWorker from './registerServiceWorker';
 // we can replace <App/> with any html tag
 // typically in a react app we render one root component
 // then nest other components in root component like App component here
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App title='Family details'/>, document.getElementById('root'));
 registerServiceWorker();
