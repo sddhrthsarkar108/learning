@@ -11,8 +11,13 @@ import './Person.css';
 // stateless compnents should be created as pure
 // functions with props as argument from the container function
 // it's nesyed into
-const person = (props) => 
-    <div className="Person">
+const person = (props) => {
+
+    if(Math.random() > 0.999) {
+        throw new Error('error');
+    }
+
+    return (<div className="Person">
         <p>custom person component with name: {props.name},  age: {props.age}</p>
         {/*
             stateless componets may get the hndler from props
@@ -24,6 +29,7 @@ const person = (props) =>
             and then also capture the initial value by value binding
         */}
         <input onChange={props.change} value={props.name}></input>
-    </div>
+    </div>);
+    }
 
 export default person;
