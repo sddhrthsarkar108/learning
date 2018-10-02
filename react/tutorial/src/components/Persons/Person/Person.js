@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
 // import Person from 'Person.css'; won't work !!!
 import Person from "./Person.css";
-import withDiv from '../../../hoc/withDiv';
 // importing css feature is provided by webpack
 // it's dynamically injected in the script
 // while rendering on browser
+import withDiv from "../../../hoc/withDiv";
+import {LoginContext} from "../../../containers/App";
 
 // a component is essentially a function
 // returning some JSX representing custom html
@@ -21,6 +22,9 @@ const person = props => {
     // elements can't simply sit side by side if not a list
     // they should be wraped inside a container element
     <Fragment>
+      <LoginContext.Consumer>
+        {auth => (auth ? <p>Authenticated !!!</p> : null)}
+      </LoginContext.Consumer>
       <p>
         custom person component with name: {props.name}, age: {props.age}
       </p>

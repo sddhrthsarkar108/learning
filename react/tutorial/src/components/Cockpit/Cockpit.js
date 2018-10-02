@@ -21,6 +21,7 @@ const cockpit = props => {
       <button style={style} onClick={props.shuffle}>
         Shuffle
       </button>
+      <button onClick={props.authenticate}>Login</button>
     </Fragment>
     // build in alternative of Aux hoc we created
     //</Aux>

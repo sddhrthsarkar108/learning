@@ -7,6 +7,8 @@ import "./App.css";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 
+export const LoginContext = React.createContext(false);
+
 // every react component extends Component class
 // React libary
 class App extends Component {
@@ -18,7 +20,7 @@ class App extends Component {
   }
 
   // don't cause side-effects or react would rerender
-  componentWillMount() {
+  componentWillMount() { // deprecated
     console.log("[App.js] inside componet will mount");
   }
 
@@ -27,7 +29,7 @@ class App extends Component {
   // through the call to setState method
   // rather it's called on state change triggered by
   // parent via props
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) { // deprecated
     // called on state change after render of parent component
     // called of this won't work for this App.js
     console.log("App.js inside component will receive props");
@@ -43,8 +45,13 @@ class App extends Component {
     );
   }
 
-  componentWillUpdate(nextProps, nextState) {
+  componentWillUpdate(nextProps, nextState) { // deprecated
     console.log("App.js inside component will update", nextProps, nextState);
+  }
+
+  getDerivedStateProps(nextProps, prevState) {
+    console.log("App.js inside get derived state props", nextProps, prevState);
+    return prevState;
   }
 
   state = {
@@ -54,7 +61,8 @@ class App extends Component {
       { id: 3, name: "maa", age: 52 }
     ],
     showPersons: true,
-    toggleClicked: 0
+    toggleClicked: 0,
+    isAuthenticated: false
   };
 
   personShuffleHandler = () => {
@@ -104,6 +112,10 @@ class App extends Component {
         toggleClicked: prevState.toggleClicked + 1
       };
     });
+  };
+
+  loginHandler = () => {
+    this.setState({ isAuthenticated: true });
   };
 
   // every react component returns a JSX element
@@ -159,31 +171,34 @@ class App extends Component {
         >
           Show family members
         </button>
-        {
-          //this.state.showPersons === true ? // can' use if and not efficient for complex jxs
-          // <div>
-          // <Person
-          // name={this.state.persons[0].name}
-          // age={this.state.persons[0].age}/>
-          // {/*
-          //   we can even send html content as child
-          //   which would be recieved in the props of person
-          //   component dynamically.
-          // */}
-          // <Person
-          // name={this.state.persons[1].name}
-          // age={this.state.persons[1].age}
-          // click={this.personShuffleHandler}
-          // change={this.nameChangeHandler}>
-          // <li>No hobbbies</li>
-          // </Person>
-          // </div> //: null
-          persons
-        }
+        <LoginContext.Provider value={this.state.isAuthenticated}>
+          {
+            //this.state.showPersons === true ? // can' use if and not efficient for complex jxs
+            // <div>
+            // <Person
+            // name={this.state.persons[0].name}
+            // age={this.state.persons[0].age}/>
+            // {/*
+            //   we can even send html content as child
+            //   which would be recieved in the props of person
+            //   component dynamically.
+            // */}
+            // <Person
+            // name={this.state.persons[1].name}
+            // age={this.state.persons[1].age}
+            // click={this.personShuffleHandler}
+            // change={this.nameChangeHandler}>
+            // <li>No hobbbies</li>
+            // </Person>
+            // </div> //: null
+            persons
+          }
+        </LoginContext.Provider>
         <Cockpit
           title={this.props.title}
           toggle={this.toggleHandler}
           shuffle={this.personShuffleHandler}
+          authenticate={this.loginHandler}
         />
       </div>
     );
@@ -194,6 +209,13 @@ class App extends Component {
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Learning react'));
     // since jsx is compiled to js we can't use class of html
     // class is a valid js keyword.
+  }
+
+  // called before component did mount where actual dom
+  // update happens. Here we take snapshot of actual dom
+  // which can be rolled back if something goes wrong
+  getSnapshotBeforeUpdate() {
+    console.log("[App.js] inside get snapshot before update");
   }
 
   // cause side-effects
