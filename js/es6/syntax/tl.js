@@ -1,4 +1,4 @@
-;let name = 'sid';
+let name = 'sid';
 
 console.log('Hi there, ${name} here !!!');
 // helps to write complex multiline/template strings
