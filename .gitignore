@@ -6,3 +6,7 @@ npm-debug.log
 .vscode
 *lock*
 *idea*
+*out*
+*.class
+*.iml
+*jar*
