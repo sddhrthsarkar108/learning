@@ -6,17 +6,17 @@ import {addPart, deletePart} from '../actions/part'
 
 class PartList extends Component {
     state = {
-        partNumber: 0
+        partNumber: 1
     }
 
     render() {
         const {parts, addPart, deletePart} = this.props;
 
         return (
-            <div>
+            <>
                 {parts.map(part => <Part onClick={() => deletePart(part)} key={part.name} name={part.name} desc={part.desc}/>)}
                 <button onMouseLeave={() => this.setState({partNumber: ++this.state.partNumber})} onClick={() => addPart({name: `p${this.state.partNumber}`, desc: `p${this.state.partNumber} desc`})}>Add</button>
-            </div>
+            </>
             );
     }
 }
