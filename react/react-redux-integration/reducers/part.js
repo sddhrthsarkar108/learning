@@ -1,14 +1,5 @@
 const initialState = {
-    parts: [
-        {
-            name: 'p1',
-            desc: 'p1 desc'
-        },
-        {
-            name: 'p2',
-            desc: 'p2 desc'
-        }
-    ]
+    parts: []
 };
 
 const parts = (state=initialState, action) => {

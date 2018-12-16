@@ -1,16 +1,24 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import Part from '../components/Part';
 import {addPart, deletePart} from '../actions/part'
 
-const PartList = ({parts, addPart, deletePart}) => {
-    return (
-        <div>
-            {parts.map(part => <Part onClick={() => deletePart(part)} key={part.name} name={part.name} desc={part.desc}/>)}
-            <button onClick={() => addPart({name: 'p3', desc: 'p3 desc'})}>Add</button>
-        </div>
-        );
+class PartList extends Component {
+    state = {
+        partNumber: 0
+    }
+
+    render() {
+        const {parts, addPart, deletePart} = this.props;
+
+        return (
+            <div>
+                {parts.map(part => <Part onClick={() => deletePart(part)} key={part.name} name={part.name} desc={part.desc}/>)}
+                <button onMouseLeave={() => this.setState({partNumber: ++this.state.partNumber})} onClick={() => addPart({name: `p${this.state.partNumber}`, desc: `p${this.state.partNumber} desc`})}>Add</button>
+            </div>
+            );
+    }
 }
 
 const mapStateToProps = state => ({
