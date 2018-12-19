@@ -1,0 +1,20 @@
+grid:
+  - An HTML element becomes a grid container by setting the display property to grid or inline-grid.
+  - You can adjust the gap size by using one of the following properties:
+grid-column-gap, grid-row-gap, grid-gap
+
+  - container:
+    - The grid-template-columns property defines the number of columns in your grid layout, and it can define the width of each column. The value is a space-separated-list, where each value defines the length of the respective column.
+    - The grid-template-rows property defines the height of each row.
+    - The justify-content property is used to align the whole grid inside the container.
+    - The align-content property is used to vertically align the whole grid inside the container.
+    
+  - item:
+    - The grid-column/row property defines on which column(s) to place an item. ( grid-column: 1 / 5 [horizontally], grid-column: 1 / span 3 [vertically])
+    - The grid-area property can be used as a shorthand property for the grid-row-start, grid-column-start, grid-row-end and the grid-column-end properties. (grid-area: 1 / 2 / 5 / 6)
+    - Named grid items can be referred to by the grid-template-areas property of the grid container. A period sign represents a grid item with no name.
+(ex: grid-template-areas: 'myArea myArea myArea myArea myArea';)
+      - grid-template-areas: 'myArea myArea . . .': Let "myArea" span two columns in a five columns grid layout (period signs represent items with no name)
+      - grid-template-areas: 'myArea myArea . . .' 'myArea myArea . . .':  two rows, define the column of the second row inside another set of apostrophes
+    - The Grid Layout allows us to position the items anywhere we like.
+
