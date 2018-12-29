@@ -12,7 +12,6 @@ class App extends Component {
     }
 
     toggle() {
-        console.log('**********************')
         this.setState({
             popoverOpen: !this.state.popoverOpen
         });
@@ -21,8 +20,8 @@ class App extends Component {
     render() {
         return (
             <>
-                <Button id="PopoverFocus" type="button">Launch Popover</Button>
-                <Popover trigger="focus" placement="bottom" isOpen={this.state.popoverOpen} target="PopoverFocus" toggle={this.toggle}>
+                <Button id="PopoverFocus" type="button" onClick={this.toggle}>Launch Popover</Button>
+                <Popover placement="bottom" isOpen={this.state.popoverOpen} target="PopoverFocus">
                     <PopoverHeader>Popover Title</PopoverHeader>
                     <PopoverBody>Sed posuere consectetur est at lobortis.</PopoverBody>
                 </Popover>
