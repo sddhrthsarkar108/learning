@@ -1,7 +1,7 @@
 ***find***
 find in files: ctrl shift f
-	- case sensitive: alt c
-	- whole word match: alt w
+case sensitive: alt c
+whole word match: alt w
 replace in files: ctrl shift h
 
 multi cursor occurances: ctrl f2
