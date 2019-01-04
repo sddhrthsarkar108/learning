@@ -34,6 +34,8 @@ close tag: alt .
 toggle line comment: ctrl /
 toggle block comment: ctrl shift a
 
+toggle side bar: ctrl b
+
 
 ***code***
 switch editor: ctrl tab
