@@ -1,4 +1,5 @@
 ***find***
+
 find in files: ctrl shift f
 case sensitive: alt c
 whole word match: alt w
@@ -24,6 +25,7 @@ format import: shift alt o
 quick fix: ctrl .
 
 ***editor***
+
 move line up/down: alt up/down
 delete line: ctrl shift k
 
@@ -38,6 +40,7 @@ toggle side bar: ctrl b
 
 
 ***code***
+
 switch editor: ctrl tab
 terminal: ctrl shift `
 
@@ -52,6 +55,7 @@ settings: ctrl ,
 exit: ctrl shift w
 
 ***others***
+
 fold/unfold: ctrl shift [/]
 
 ````````````````````````
