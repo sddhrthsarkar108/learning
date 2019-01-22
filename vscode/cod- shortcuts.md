@@ -26,6 +26,9 @@ quick fix: ctrl .
 
 ***editor***
 
+navigate back: ctrl alt -
+navigate forward: ctrl shift -
+
 move line up/down: alt up/down
 delete line: ctrl shift k
 
