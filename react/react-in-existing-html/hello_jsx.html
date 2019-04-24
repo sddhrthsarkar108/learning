@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <title>React in existing html using jsx</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <div id="container"></div>
+    
+    <script type="text/babel">
+        ReactDOM.render(
+            <h1>Hello</h1>,
+            document.getElementById('root')
+        );
+    </script>
+
+    <!-- According to MDN, if you specify a script tag with a type that's not text/javascript, 
+    it will be ignored by the browser: The embedded content is treated as a data block which won't 
+    be processed by the browser. Developers must use a valid MIME type that is not a JavaScript MIME 
+    type to denote data blocks. The src attribute will be ignored. In other words, the browser does 
+    not load or run index.js in your example. This makes sense - if it did, you'd get a syntax error, 
+    as your browser can't understand JSX. What actually happens is that the babel-standalone script 
+    looks at your HTML, finds all of the script tags marked text/babel, loads them via XMLHttpRequest, 
+    and then compiles and runs them. This is why you're getting CORS errors - the browser's not loading the file, 
+    the script is. Unfortunately, I don't think you can resolve this without using a web server or compiling your 
+    Babel code ahead of time. -->
+
+    <script type="text/babel" src="button_jsx.js"></script>
+</body>
