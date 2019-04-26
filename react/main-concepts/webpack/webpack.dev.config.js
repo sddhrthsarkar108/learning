@@ -18,5 +18,6 @@ module.exports = {
     output: {
         path: parentDir,
         filename: 'bundle.js'
-    }
+    },
+    devtool: 'eval-source-map'
 }
