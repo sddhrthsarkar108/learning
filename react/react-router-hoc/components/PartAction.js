@@ -12,7 +12,11 @@ class PartAction extends Component {
         const { addPart } = this.props;
 
         return (
-            <button onMouseLeave={() => this.setState({ partNumber: ++this.state.partNumber })} onClick={() => addPart({ name: `p${this.state.partNumber}`, desc: `p${this.state.partNumber} desc` })}>Add</button>
+            <button
+                onMouseLeave={() => this.setState({ partNumber: ++this.state.partNumber })}
+                onClick={() => addPart({ name: `p${this.state.partNumber}`, desc: `p${this.state.partNumber} desc` })}>
+                Add
+            </button>
         );
     }
 }

@@ -10,7 +10,7 @@
     "build": "webpack --mode production"
   },
   "keywords": [],
-  "author": "",
+  "author": "sid",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.4.3",
