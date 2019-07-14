@@ -1,35 +1,33 @@
-package threading.pc;
+package concurrency.sychronizers.semaphores;
+
+import java.util.concurrent.Semaphore;
 
 class Q {
     private int i;
-    private boolean valueSet = false;
+    private Semaphore semCon = new Semaphore(0);
+    private Semaphore semProd = new Semaphore(1);
 
-    synchronized void put(int n) {
-        while (valueSet) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-            }
+    void put(int n) {
+        try {
+            semProd.acquire();
+        } catch (InterruptedException e) {
+
         }
 
         System.out.println("put :" + n);
         this.i = n;
-        valueSet = true;
-        notifyAll();
+        semCon.release();
     }
 
-    synchronized int get() {
-        while (!valueSet) {
-            try {
-                wait();
-            }
-            catch (InterruptedException e) {
-            }
+    int get() {
+        try {
+            semCon.acquire();
+        } catch (InterruptedException e) {
+
         }
 
-        System.out.println("get: " + i);
-        valueSet = false;
-        notifyAll();
+        System.out.println("got: " + i);
+        semProd.release();
         return i;
     }
 }

@@ -1,4 +1,4 @@
-package concurrency.sychronizers;
+package concurrency.sychronizers.semaphores;
 
 import java.util.concurrent.Semaphore;
 

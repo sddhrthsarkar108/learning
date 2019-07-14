@@ -7,9 +7,7 @@ public class Latch {
     public static void main(String[] args) {
         CountDownLatch cdl = new CountDownLatch(3);
 
-        // two or more thread will wait at predefined point
         new Thread(() -> {
-
             for (int i = 0; i < 3; i++) {
                 try {
                     TimeUnit.SECONDS.sleep(1);

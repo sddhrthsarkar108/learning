@@ -9,12 +9,12 @@ public class Barrier {
 
         // two or more thread will wait at predefined point
         for(int i=0; i<2; i++)
-        new Thread(() -> {
-            try {
-                cb.await();
-            } catch (BrokenBarrierException | InterruptedException e) {
+            new Thread(() -> {
+                try {
+                    cb.await();
+                } catch (BrokenBarrierException | InterruptedException e) {
 
-            }
-        }).start();
+                }
+            }).start();
     }
 }

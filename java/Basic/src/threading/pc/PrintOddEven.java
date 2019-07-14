@@ -1,10 +1,10 @@
 package threading.pc;
 
 class Printer {
-    private boolean isOdd;
+    private boolean isOddPrinted;
 
     synchronized void printEven(int number) {
-        while (!isOdd) {
+        while (!isOddPrinted) {
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -12,12 +12,12 @@ class Printer {
             }
         }
         System.out.println(Thread.currentThread().getName() + ":" + number);
-        isOdd = false;
+        isOddPrinted = false;
         notify();
     }
 
     synchronized void printOdd(int number) {
-        while (isOdd) {
+        while (isOddPrinted) {
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -25,7 +25,7 @@ class Printer {
             }
         }
         System.out.println(Thread.currentThread().getName() + ":" + number);
-        isOdd = true;
+        isOddPrinted = true;
         notify();
     }
 }
@@ -56,12 +56,10 @@ class TaskEvenOdd implements Runnable {
     }
 }
 
-public class OE {
+public class PrintOddEven {
     public static void main(String[] args) {
         Printer print = new Printer();
-        Thread t1 = new Thread(new TaskEvenOdd(print, 10, false), "Odd");
-        Thread t2 = new Thread(new TaskEvenOdd(print, 10, true), "Even");
-        t1.start();
-        t2.start();
+        new Thread(new TaskEvenOdd(print, 10, false), "Odd").start();
+        new Thread(new TaskEvenOdd(print, 10, true), "Even").start();
     }
 }

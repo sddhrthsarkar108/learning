@@ -5,18 +5,18 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Sequence {
-    static int number = 0;
-    static final int PRINT_NUMBERS_UPTO = 10;
-    static Object lock = new Object();
+    private static int number = 0;
+    private static final int PRINT_NUMBERS_UPTO = 10;
+    private static final Object lock = new Object();
 
     static class SequentialThread implements Runnable {
-        int remainder;
+        int sequence;
         int noOfThreads;
         String name;
 
-        public SequentialThread(String name, int remainder, int noOfThreads) {
+        SequentialThread(String name, int sequence, int noOfThreads) {
             this.name = name;
-            this.remainder = remainder;
+            this.sequence = sequence;
             this.noOfThreads = noOfThreads;
         }
 
@@ -24,7 +24,7 @@ public class Sequence {
         public void run() {
             while (number < PRINT_NUMBERS_UPTO) {
                 synchronized (lock) {
-                    while (number % noOfThreads != remainder) { // wait for numbers other than remainder
+                    while (number % noOfThreads != sequence) { // wait for numbers other than remainder
                         try {
                             lock.wait();
                         } catch (InterruptedException e) {
@@ -41,7 +41,7 @@ public class Sequence {
     }
 
     public static void main(String[] args) {
-        int noOfThreads = 4;
+        int noOfThreads = 3;
         ExecutorService es = Executors.newFixedThreadPool(noOfThreads);
 
         for(int i=0; i< noOfThreads; i++) {
