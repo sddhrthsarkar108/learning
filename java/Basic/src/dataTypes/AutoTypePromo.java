@@ -1,4 +1,4 @@
-package dt;
+package dataTypes;
 
 public class AutoTypePromo {
     public static void main(String[] args) {

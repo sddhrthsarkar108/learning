@@ -1,5 +1,8 @@
 package concurrency.executors.threadpool.custom;
 
+import concurrency.collecion.blockingQueue.CustomBlockingQueue;
+import concurrency.collecion.blockingQueue.ICustomBlockingQueue;
+
 public class ThreadPool {
     private ICustomBlockingQueue<Runnable> taskQueue;
 

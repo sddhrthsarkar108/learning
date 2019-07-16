@@ -33,11 +33,11 @@ public class Scenarios {
 //    from static block
 //    main called with args 1
 //    from 1st instance block.
-//            from 2st instance block.
+//    from 2st instance block.
 //    default constructor.
 //
 //    main called with args 0
 //    from 1st instance block.
-//            from 2st instance block.
+//    from 2st instance block.
 //    default constructor.
 }
