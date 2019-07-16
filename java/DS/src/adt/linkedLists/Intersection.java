@@ -1,6 +1,6 @@
 package adt.linkedLists;
 
-public class Interdection {
+public class Intersection {
     static Node head1, head2;
 
     int getNode() {
@@ -51,7 +51,7 @@ public class Interdection {
     }
 
     public static void main(String[] args) {
-        Interdection list = new Interdection();
+        Intersection list = new Intersection();
 
         // creating first linked list
         list.head1 = new Node(3);

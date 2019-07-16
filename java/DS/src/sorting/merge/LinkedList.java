@@ -1,20 +1,7 @@
 package sorting.merge;
 
-public class linkedList {
-    node head = null;
-
-    // node a, b;
-    static class node {
-        int val;
-        node next;
-
-        public node(int val) {
-            this.val = val;
-        }
-    }
-
-    node sortedMerge(node a, node b) {
-        node result = null;
+class linkedList {
+    node merge(node a, node b) {
         /* Base cases */
         if (a == null)
             return b;
@@ -23,16 +10,15 @@ public class linkedList {
 
         /* Pick either a or b, and recur */
         if (a.val <= b.val) {
-            result = a;
-            result.next = sortedMerge(a.next, b);
+            a.next = merge(a.next, b);
+            return a;
         } else {
-            result = b;
-            result.next = sortedMerge(a, b.next);
+            b.next = merge(a, b.next);
+            return b;
         }
-        return result;
     }
 
-    node mergeSort(node h) {
+    node sort(node h) {
         // Base case : if head is null
         if (h == null || h.next == null) {
             return h;
@@ -40,19 +26,19 @@ public class linkedList {
 
         // get the middle of the list
         node middle = getMiddle(h);
-        node nextofmiddle = middle.next;
+        node nextOfMiddle = middle.next;
 
         // set the next of middle node to null
         middle.next = null;
 
         // Apply mergeSort on left list
-        node left = mergeSort(h);
+        node left = sort(h);
 
         // Apply mergeSort on right list
-        node right = mergeSort(nextofmiddle);
+        node right = sort(nextOfMiddle);
 
         // Merge the left and right lists
-        node sortedlist = sortedMerge(left, right);
+        node sortedlist = merge(left, right);
         return sortedlist;
     }
 
@@ -76,27 +62,7 @@ public class linkedList {
         return slowptr;
     }
 
-    void push(int new_data) {
-        /* allocate node */
-        node new_node = new node(new_data);
-
-        /* link the old list off the new node */
-        new_node.next = head;
-
-        /* move the head to point to the new node */
-        head = new_node;
-    }
-
-    // Utility function to print the linked list
-    void printList(node headref) {
-        while (headref != null) {
-            System.out.print(headref.val + " ");
-            headref = headref.next;
-        }
-    }
-
     public static void main(String[] args) {
-
         linkedList li = new linkedList();
         /*
          * Let us create a unsorted linked list to test the functions
@@ -110,8 +76,34 @@ public class linkedList {
         li.push(2);
 
         // Apply merge Sort
-        li.head = li.mergeSort(li.head);
+        li.head = li.sort(li.head);
         System.out.print("\n Sorted Linked List is: \n");
         li.printList(li.head);
+    }
+
+    node head = null;
+
+    // node a, b;
+    static class node {
+        int val;
+        node next;
+
+        public node(int val) {
+            this.val = val;
+        }
+    }
+
+    void push(int new_data) {
+        node new_node = new node(new_data);
+        new_node.next = head;
+        head = new_node;
+    }
+
+    // Utility function to print the linked list
+    void printList(node headref) {
+        while (headref != null) {
+            System.out.print(headref.val + " ");
+            headref = headref.next;
+        }
     }
 }

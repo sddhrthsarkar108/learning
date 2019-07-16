@@ -53,7 +53,7 @@ public class MergeSort {
     void sort(int arr[], int l, int r) {
         if (l < r) {
             // Find the middle point
-            int m = (l + r) / 2;
+            int m = (l + r) >>> 2;
 
             // Sort first and second halves
             sort(arr, l, m);
