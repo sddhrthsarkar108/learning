@@ -1,6 +1,5 @@
 package creational.singleton;
 
-public enum EnumSingletin {
+public enum EnumSingleton {
     SINGLETON;
-
 }

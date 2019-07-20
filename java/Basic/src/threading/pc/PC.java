@@ -22,8 +22,7 @@ class Q {
         while (!valueSet) {
             try {
                 wait();
-            }
-            catch (InterruptedException e) {
+            } catch (InterruptedException e) {
             }
         }
 
@@ -36,22 +35,20 @@ class Q {
 
 public class PC {
     public static void main(String[] args) {
-        Q q =  new Q();
-
+        Q q = new Q();
         new Thread(() -> {
             int i = 0;
 
-            while(i<10) {
+            while (i < 10) {
                 q.put(++i);
             }
 
         }, "producer").start();
-
         new Thread(() -> {
             int i = 0;
 
-            while(i<10) {
-                i=q.get();
+            while (i < 10) {
+                i = q.get();
             }
         }, "consumer").start();
     }

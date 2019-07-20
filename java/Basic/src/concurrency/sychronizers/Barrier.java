@@ -8,7 +8,7 @@ public class Barrier {
         CyclicBarrier cb = new CyclicBarrier(2, () -> System.out.println("Barrier reached"));
 
         // two or more thread will wait at predefined point
-        for(int i=0; i<2; i++)
+        for (int i = 0; i < 2; i++) {
             new Thread(() -> {
                 try {
                     cb.await();
@@ -16,5 +16,18 @@ public class Barrier {
 
                 }
             }).start();
+        }
+
+        //cb.reset();
+
+        for (int i = 0; i < 2; i++) {
+            new Thread(() -> {
+                try {
+                    cb.await();
+                } catch (BrokenBarrierException | InterruptedException e) {
+
+                }
+            }).start();
+        }
     }
 }

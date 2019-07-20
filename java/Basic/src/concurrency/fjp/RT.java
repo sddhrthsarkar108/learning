@@ -1,10 +1,7 @@
 package concurrency.fjp;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.RecursiveTask;
-import java.util.stream.IntStream;
 
 class BinarySearch<V extends Comparable> extends RecursiveTask<Integer> {
     private List<V> data;
@@ -43,7 +40,7 @@ class BinarySearch<V extends Comparable> extends RecursiveTask<Integer> {
 
             // Else the element can only be present
             // in right subarray
-            return new BinarySearch<>(data, mid + 1, right, key).invoke();
+            //return new BinarySearch<>(data, mid + 1, right, key).invoke();
         }
 
         // We reach here when element is not present

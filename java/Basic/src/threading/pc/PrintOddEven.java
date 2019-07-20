@@ -33,20 +33,20 @@ class Printer {
 class TaskEvenOdd implements Runnable {
     private int max;
     private Printer print;
-    private boolean isEvenNumber;
+    private boolean isEvenPrinter;
 
-    TaskEvenOdd(Printer print, int max, boolean isEvenNumber) {
+    TaskEvenOdd(Printer print, int max, boolean isEvenPrinter) {
         this.print = print;
         this.max = max;
-        this.isEvenNumber =isEvenNumber;
+        this.isEvenPrinter = isEvenPrinter;
     }
 
     @Override
     public void run() {
-        int number = isEvenNumber ? 2 : 1;
+        int number = isEvenPrinter ? 2 : 1;
 
         while (number <= max) {
-            if (isEvenNumber) {
+            if (isEvenPrinter) {
                 print.printEven(number);
             } else {
                 print.printOdd(number);

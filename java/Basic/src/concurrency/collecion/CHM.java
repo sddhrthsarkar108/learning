@@ -8,7 +8,6 @@ import java.util.concurrent.atomic.DoubleAdder;
 public class CHM {
     public static void main(String[] args) {
         ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>(200, 0.75f, 10);
-        ;
         map.getOrDefault("k", "v1");
         // atomic
         map.compute("k", (k, v) -> "v2");

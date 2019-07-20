@@ -71,10 +71,8 @@ class Labrador extends Dog {
 public class Strategy {
     public static void main(String[] args) {
         Dog lab = new Labrador();
-
         lab.doEat(); // Prints "This is a normal diet"
         lab.doBark(); // "Bark! Bark!"
-
         lab.setEatBehavior(new ProteinDiet());
     }
 }

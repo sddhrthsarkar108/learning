@@ -11,7 +11,7 @@ public class BinarySearches {
             int midVal = a[mid];
 
             if (midVal < key)
-                low = mid + 1
+                low = mid + 1;
             else if (midVal > key)
                 high = mid - 1;
             else

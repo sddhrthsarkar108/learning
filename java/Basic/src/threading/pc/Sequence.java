@@ -44,8 +44,10 @@ public class Sequence {
         int noOfThreads = 3;
         ExecutorService es = Executors.newFixedThreadPool(noOfThreads);
 
-        for(int i=0; i< noOfThreads; i++) {
-            es.execute(new SequentialThread("T"+(i + 1), i, noOfThreads));
+        for (int i = 0; i < noOfThreads; i++) {
+            es.execute(new SequentialThread("T" + (i + 1), i, noOfThreads));
         }
+
+        es.shutdown();
     }
 }

@@ -34,24 +34,24 @@ class QuickSort<T extends Comparable> extends RecursiveAction {
         T pivotValue = data.get(pivotIndex);
         swap(pivotIndex, right);
 
-        int storeIndex = left;
+        int j = left;
         for (int i = left; i < right; i++) {
-            if (data.get(i).compareTo(pivotValue) < 0) {
-                swap(i, storeIndex);
-                storeIndex++;
+            if (data.get(i).compareTo(pivotValue) <= 0) {
+                if (i != j) {
+                    swap(i, j);
+                }
+                j++;
             }
         }
 
-        swap(storeIndex, right);
-        return storeIndex;
+        swap(j, right);
+        return j;
     }
 
     private void swap(int i, int j) {
-        if (i != j) {
-            T iValue = data.get(i);
-            data.set(i, data.get(j));
-            data.set(j, iValue);
-        }
+        T iValue = data.get(i);
+        data.set(i, data.get(j));
+        data.set(j, iValue);
     }
 }
 
@@ -64,7 +64,7 @@ public class RA {
             myList.add(value);
         }
 
-        QuickSort<Integer> quickSort = new QuickSort<Integer>(myList);
+        QuickSort<Integer> quickSort = new QuickSort<>(myList);
         //ForkJoinPool pool = new ForkJoinPool();
         //pool.invoke(quickSort);
         quickSort.invoke();

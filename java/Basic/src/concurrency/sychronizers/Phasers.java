@@ -27,7 +27,6 @@ class CustomPhaser extends Phaser {
 public class Phasers {
     public static void main(String[] args) {
         CustomPhaser phaser = new CustomPhaser(1, 3);
-
         ExecutorService es = Executors.newFixedThreadPool(2);
 
         IntStream.iterate(0, i -> i + 1).limit(3).forEach(n -> es.execute(() -> {

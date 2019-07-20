@@ -21,7 +21,7 @@ class PhoneDecorator implements Phone {
     @Override
     public void printModel() {
         // The wrapper object will delegate any incoming method calls to the original object,
-        this.phone.printModel();
+        phone.printModel();
     }
 }
 

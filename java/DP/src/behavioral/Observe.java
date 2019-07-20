@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 interface Channel {
-    public void update(Object o);
+    public void update(String o);
 }
 
 class NewsChannel implements Channel {
     private String news;
 
     @Override
-    public void update(Object news) {
-        this.setNews((String) news);
+    public void update(String news) {
+        this.setNews(news);
     }
 
     public void setNews(String news) {

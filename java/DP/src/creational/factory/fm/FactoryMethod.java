@@ -8,7 +8,7 @@ abstract class AbstractFactory {
     final void orderTV() {
         createTV();
         int charge = shippingCharge();
-        System.out.println("Shipping charge :: " + charge + " INR");
+        System.out.println("Shipping charge: " + charge + " INR");
     }
 
     protected abstract int shippingCharge();
