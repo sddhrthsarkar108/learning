@@ -1,14 +1,7 @@
 node_modules
 build
 npm-debug.log
-.env
-.DS_Store
-.vscode
-*lock*
-*idea*
-*.project
 *out*
 *.class
-*.iml
 *jar*
 target
